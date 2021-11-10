@@ -23,18 +23,6 @@ function setup() {
   text('2070 Calories at Taco Bell',440,620);
   fill(0);
 
-  rect(850, 300, 40, 40);
-  text('Chrunchy Taco Supreme',900,325);
-
-  rect(850, 350, 40, 40);
-  text('Nachos BellGrande',900,375);
-
-  rect(850, 400, 40, 40);
-  text('Quesadilla Chicken',900,425);
-
-  rect(850, 450, 40, 40);
-  text('Beef Quesarito',900,475);
-
   rect(80, 200, 180, 60);
   text('TacoBell',80,190);
 
@@ -46,6 +34,23 @@ function setup() {
 
   rect(80, 500, 180, 60);
   text('Panda Express',80,490);
+
+  fill(66,0,0);
+  rect(850, 300, 40, 40);
+  text('Chrunchy Taco Supreme, 190 Calories',900,325);
+
+  fill(223,0,0);
+  rect(850, 350, 40, 40);
+  text('Nachos BellGrande, 730 Calories',900,375);
+
+  fill(179,0,0);
+  rect(850, 400, 40, 40);
+  text('Chicken Quesadilla, 510 Calories',900,425);
+
+  fill(255,0,0);
+  rect(850, 450, 40, 40);
+  text('Beef Quesarito, 640 Calories',900,475);
+
 }
 
 function draw() {
@@ -62,7 +67,9 @@ function draw() {
   var three = (quesadilla/575)*100; //89
   var four = (quesarito/575)*100;//111
 
-  var numbers = [one,two,three,four];
+//CURRENTLY THE DATA FROM THE DATASET IS NOT BEING USED IN THE PIE CHART. THERE SOME ISSUES ADDING THAT DATA AND HAVING THE PIE CHART CLOSE SUCCESSFULLY. ORGINALLY THE DATA FROM THE API WAS BEING CONVERTED TO A PERCENTAGE TO CLOSE BUT THAT WON'T WORK PROPERLY. I plan to ask you for help :)
+  // var numbers = [one,two,three,four];
+  var numbers = [127,33,89,111];
 
   colorMode(HSB, 360, 100, 100, 100);
   noStroke();
