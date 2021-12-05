@@ -1,86 +1,124 @@
 function preload(){
-firstdata = loadJSON('https://api.nutritionix.com/v1_1/search/taco%20bell?results=0:40&fields=item_name,brand_name,item_id,nf_calories&appId=1977d539&appKey=3b354c046a7985f6a86c01952ef32732%E2%80%94')
+bg = loadImage('images/first-pie-screen.png');
+
+firstdata = loadJSON('https://api.nutritionix.com/v1_1/search/starbucks?results=0:40&fields=item_name,brand_name,item_id,nf_calories&appId=1977d539&appKey=3b354c046a7985f6a86c01952ef32732%E2%80%94')
 
 secData = loadJSON('https://api.nutritionix.com/v1_1/search/subway?results=0:40&fields=item_name,brand_name,item_id,nf_calories&appId=b2fa1d78&appKey=86784ebb10a935eaadab1691162e36b8%E2%80%94')
 
 thirdData = loadJSON('https://api.nutritionix.com/v1_1/search/panda%20express?results=0:40&fields=item_name,brand_name,item_id,nf_calories&appId=b2fa1d78&appKey=86784ebb10a935eaadab1691162e36b8%E2%80%94')
-
-forthData = loadJSON('https://api.nutritionix.com/v1_1/search/starbucks?results=0:40&fields=item_name,brand_[%E2%80%A6]d=df424f78&appKey=1f8b95b6f45634e62df2e7d214944034%E2%80%94')
 }
 
 function setup() {
   createCanvas (1250,750);
+  background(bg);
 
-  textSize(50);
-  text('Nuotraker',550,100);
-  fill(0);
+//Pie Chart Placeholder
+  noStroke();
+  fill(255, 0, 0, 63);
+  circle( 600, 400, 300);
 
-  textSize(20);
-  text('Recommended Daily Calories - Women: 2000, Men: 2500',400,150);
-  fill(0);
+ //Buttons
+  stroke(51);
+  noFill();
+  rect(81, 241, 220, 64);
 
-  textSize(20);
-  text('2070 Calories at Taco Bell',440,620);
-  fill(0);
+  stroke(51);
+  noFill();
+  rect(81, 326, 220, 63);
 
-  rect(80, 200, 180, 60);
-  text('TacoBell',80,190);
+  stroke(51);
+  noFill();
+  rect(81, 410, 220, 64);
 
-  rect(80, 300, 180, 60);
-  text('Pizza Hut',80,290);
+  stroke(51);
+  noFill();
+  rect(81, 495, 220, 63);
 
-  rect(80, 400, 180, 60);
-  text('Starbucks',80,390);
-
-  rect(80, 500, 180, 60);
-  text('Panda Express',80,490);
-
-  fill(66,0,0);
-  rect(850, 300, 40, 40);
-  text('Chrunchy Taco Supreme, 190 Calories',900,325);
-
-  fill(223,0,0);
-  rect(850, 350, 40, 40);
-  text('Nachos BellGrande, 730 Calories',900,375);
-
-  fill(179,0,0);
-  rect(850, 400, 40, 40);
-  text('Chicken Quesadilla, 510 Calories',900,425);
-
-  fill(255,0,0);
-  rect(850, 450, 40, 40);
-  text('Beef Quesarito, 640 Calories',900,475);
-
+  stroke(51);
+  noFill();
+  rect(81, 579, 220, 63);
 }
 
 function draw() {
-  var taco = firstdata.hits[7].fields.nf_calories; //Crunchy Taco Supreme, 190
-  var nachos = firstdata.hits[12].fields.nf_calories; //Nachos BellGrande, 730
-  var quesadilla = firstdata.hits[24].fields.nf_calories; //Quesadilla Chicken, 510
-  var twist = firstdata.hits[26].fields.nf_calories; //Cinnamon Twists, 170
-  var quesarito = firstdata.hits[39].fields.nf_calories; //Beef Quesarito, 640
-  var bajablast = firstdata.hits[17].fields.nf_calories; //Taco Bell Original, Baja Blast, 170
-  //total: 2070 (ignore twist and baja)
+}
 
-  var one = (taco/575)*100; //33
-  var two = (nachos/575)*100; //127
-  var three = (quesadilla/575)*100; //89
-  var four = (quesarito/575)*100;//111
 
-//CURRENTLY THE DATA FROM THE DATASET IS NOT BEING USED IN THE PIE CHART. THERE SOME ISSUES ADDING THAT DATA AND HAVING THE PIE CHART CLOSE SUCCESSFULLY. ORGINALLY THE DATA FROM THE API WAS BEING CONVERTED TO A PERCENTAGE TO CLOSE BUT THAT WON'T WORK PROPERLY. I plan to ask you for help :)
-  // var numbers = [one,two,three,four];
-  var numbers = [127,33,89,111];
+function mousePressed(){
+//Orange Chicken Button
+ if(mouseX>81 && mouseX<280 && mouseY>241 && mouseY < 300){
+   stroke(255,0,0);
+   noFill();
+   rect(81, 241, 220, 64);
 
-  colorMode(HSB, 360, 100, 100, 100);
-  noStroke();
-  noLoop();
-  var diameter = 300;
-  var lastAngle = 0;
-  for (var i = 0; i < numbers.length; i++){
-    var n = numbers[i];
-    var c = map(n, 0, max(numbers), 0 ,100);
-    fill(0, 100, c);
-    arc(550, 400, diameter, diameter, lastAngle, lastAngle + radians(numbers[i]));
-    lastAngle += radians(numbers[i]);
+   colorMode(HSB);
+   angleMode(DEGREES);
+
+   noStroke();
+   pieChart(600, 400);
+
+   textSize(20);
+   text('490',800,400);
   }
+
+//Rice Button
+ // if(mouseX>81 && mouseX<280 && mouseY>326 && mouseY < 385){
+ //   stroke(255,0,0);
+ //   noFill();
+ //   rect(81, 326, 220, 63);
+ //
+ //   colorMode(HSB);
+ //   angleMode(DEGREES);
+ //
+ //   noStroke();
+ //   pieChart(600, 400);
+ //
+ //   textSize(20);
+ //   text('520',800,500);
+ // }
+
+}
+
+function pieChart(x, y) {
+  var pChicken = thirdData.hits[7].fields.nf_calories; //Orange Chicken, 490
+  var pRice = thirdData.hits[25].fields.nf_calories; //Fried Rice, 520
+  var pVegi = thirdData.hits[1].fields.nf_calories; //Super Greens, 90
+  var pBeef = thirdData.hits[5].fields.nf_calories; //Beijing Beef, 470
+  var pTofu = thirdData.hits[3].fields.nf_calories; //Eggplant Tofu, 340
+
+
+  var [total, pChicken, pRice, pVegi, pBeef, pTofu] = [1910, 490, 520, 90, 470, 340];
+
+  var startValue = 0;
+  var range = 0;
+
+  //pChicken slice
+  range = pChicken / total;
+  drawSlice("indianred", x, y, 300, startValue, startValue + range);
+  startValue += range;
+
+  //pRice slice
+  // range = pRice / total;
+  // drawSlice("salmon", x, y, 300, startValue, startValue + range);
+  // startValue += range;
+
+  // //pVegi slice
+  // range = pVegi / total;
+  // drawSlice("maroon", x, y, 300, startValue, startValue + range);
+  // startValue += range;
+
+  // //pBeef slice
+  // range = pBeef / total;
+  // drawSlice("coral", x, y, 300, startValue, startValue + range);
+  // startValue += range;
+
+  // //pTofu slice
+  // range = pTofu / total;
+  // drawSlice("firebrick", x, y, 300, startValue, startValue + range);
+  // startValue += range;
+
+}
+
+function drawSlice(fColor, x, y, d, percent1, percent2) {
+  fill(fColor);
+  arc(x, y, d, d, -90 + percent1 * 360, -90 + percent2 * 360);
 }
